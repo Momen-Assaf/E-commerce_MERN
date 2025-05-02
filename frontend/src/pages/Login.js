@@ -57,7 +57,8 @@ const Login = () => {
                                         value={Data.password}
                                         placeholder='********'
                                         className='w-full h-full outline-none bg-transparent'></input>
-                                    <div className='cursor-pointer text-xl' onClick={() => SetShowPassword((prev) => (!prev))}>
+                                    <div className='cursor-pointer text-xl'
+                                        onClick={() => SetShowPassword((prev) => (!prev))}>
                                         <span>
                                             {
                                                 ShowPassword ?
@@ -72,7 +73,9 @@ const Login = () => {
                                         </span>
                                     </div>
                                 </div>
-                                <Link to='/forgot-password' />
+                                <div className='text-red-600 hover:text-red-700 flex justify-end hover:underline'>
+                                    <Link to='/forgot-password'>ForgotPassword?</Link>
+                                </div>
                             </div>
                             <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Login</button>
                         </div>
