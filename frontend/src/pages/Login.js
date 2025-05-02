@@ -5,6 +5,21 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [ShowPassword, SetShowPassword] = useState(false);
+    const [Data, setData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setData((prev) => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
+    }
+    console.log('log in data: ', Data);
     return (
         <section id='login'>
             <div className='mx-auto container p-4'>
@@ -17,13 +32,25 @@ const Login = () => {
                         <div className='grid'>
                             <label>Email :</label>
                             <div className='bg-slate-100 p-2'>
-                                <input type='email' placeholder='momenssf@gmail.com' className='w-full h-full outline-none bg-transparent' />
+                                <input
+                                    type='email'
+                                    name='email'
+                                    onChange={handleChange}
+                                    value={Data.email}
+                                    placeholder='momenssf@gmail.com'
+                                    className='w-full h-full outline-none bg-transparent' />
                             </div>
                         </div>
                         <div>
                             <label>Password:</label>
                             <div className='bg-slate-100 p-2 flex'>
-                                <input type={ShowPassword ? 'text' : 'password'} placeholder='********' className='w-full h-full outline-none bg-transparent'></input>
+                                <input
+                                    type={ShowPassword ? 'text' : 'password'}
+                                    name='password'
+                                    onChange={handleChange}
+                                    value={Data.password}
+                                    placeholder='********'
+                                    className='w-full h-full outline-none bg-transparent'></input>
                                 <div className='cursor-pointer text-xl' onClick={() => SetShowPassword((prev) => (!prev))}>
                                     <span>
                                         {
