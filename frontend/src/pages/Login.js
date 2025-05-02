@@ -33,7 +33,7 @@ const Login = () => {
 
                     <form
                         className='pt-6'
-                        // onSubmit={handleSubmit}
+                    // onSubmit={handleSubmit}
                     >
                         <div className='grid'>
                             <label>Email :</label>
@@ -46,35 +46,36 @@ const Login = () => {
                                     placeholder='momenssf@gmail.com'
                                     className='w-full h-full outline-none bg-transparent' />
                             </div>
-                        </div>
-                        <div>
-                            <label>Password:</label>
-                            <div className='bg-slate-100 p-2 flex'>
-                                <input
-                                    type={ShowPassword ? 'text' : 'password'}
-                                    name='password'
-                                    onChange={handleChange}
-                                    value={Data.password}
-                                    placeholder='********'
-                                    className='w-full h-full outline-none bg-transparent'></input>
-                                <div className='cursor-pointer text-xl' onClick={() => SetShowPassword((prev) => (!prev))}>
-                                    <span>
-                                        {
-                                            ShowPassword ?
-                                                (
-                                                    <FaEyeSlash />
-                                                )
-                                                :
-                                                (
-                                                    <FaEye />
-                                                )
-                                        }
-                                    </span>
+
+                            <div>
+                                <label>Password:</label>
+                                <div className='bg-slate-100 p-2 flex'>
+                                    <input
+                                        type={ShowPassword ? 'text' : 'password'}
+                                        name='password'
+                                        onChange={handleChange}
+                                        value={Data.password}
+                                        placeholder='********'
+                                        className='w-full h-full outline-none bg-transparent'></input>
+                                    <div className='cursor-pointer text-xl' onClick={() => SetShowPassword((prev) => (!prev))}>
+                                        <span>
+                                            {
+                                                ShowPassword ?
+                                                    (
+                                                        <FaEyeSlash />
+                                                    )
+                                                    :
+                                                    (
+                                                        <FaEye />
+                                                    )
+                                            }
+                                        </span>
+                                    </div>
                                 </div>
+                                <Link to='/forgot-password' />
                             </div>
-                            <Link to='/forgot-password' />
+                            <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Login</button>
                         </div>
-                        <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Login</button>
                     </form>
                     <p className='my-5'>Dont have an account? <Link to='/sign-up' className='text-red-600 hover:text-red-700 hover:underline'> Sign up!</Link></p>
                 </div>
