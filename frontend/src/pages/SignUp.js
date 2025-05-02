@@ -22,6 +22,7 @@ const SignUp = () => {
             }
         })
     }
+    console.log('sign up data: ', Data);
     return (
         <section id='sign-up'>
             <div className='mx-auto containter p-4'>
@@ -54,6 +55,61 @@ const SignUp = () => {
                                     placeholder='momenssf@gmail.com'
                                     className='w-full h-full outline-none bg-transparent' />
                             </div>
+                            <div>
+                                <label>Password: </label>
+                                <div className='bg-slate-100 p-2 flex'>
+                                    <input
+                                        type={ShowPassword ? 'text' : 'password'}
+                                        name='password'
+                                        onChange={handleChange}
+                                        value={Data.password}
+                                        placeholder='********'
+                                        className='w-full h-full outline-none bg-transparent'
+                                    />
+                                    <div className='cursor-pointer text-xl'
+                                        onClick={() => SetShowPassword((prev) => (!prev))}>
+                                        <span>
+                                            {
+                                                ShowPassword ?
+                                                    (
+                                                        <FaEyeSlash />
+                                                    ) :
+                                                    (
+                                                        <FaEye />
+                                                    )
+                                            }
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label>Confirm Password: </label>
+                                <div className='bg-slate-100 p-2 flex'>
+                                    <input
+                                        type={ShowPasswordConformation ? 'text' : 'password'}
+                                        name='passwordConfirm'
+                                        onChange={handleChange}
+                                        value={Data.passwordConfirm}
+                                        placeholder='********'
+                                        className='w-full h-full outline-none bg-transparent'
+                                    />
+                                    <div className='cursor-pointer text-xl'
+                                        onClick={() => SetShowPasswordConformation((prev) => (!prev))}>
+                                        <span>
+                                            {
+                                                ShowPasswordConformation ?
+                                                    (
+                                                        <FaEyeSlash />
+                                                    ) :
+                                                    (
+                                                        <FaEye />
+                                                    )
+                                            }
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Sign Up</button>
                         </div>
                     </form>
                 </div>
