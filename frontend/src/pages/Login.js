@@ -19,6 +19,9 @@ const Login = () => {
             }
         })
     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
     console.log('log in data: ', Data);
     return (
         <section id='login'>
@@ -28,7 +31,10 @@ const Login = () => {
                         <img src='/assets/signin.gif' alt='login' />
                     </div>
 
-                    <form className='pt-6'>
+                    <form
+                        className='pt-6'
+                        // onSubmit={handleSubmit}
+                    >
                         <div className='grid'>
                             <label>Email :</label>
                             <div className='bg-slate-100 p-2'>
