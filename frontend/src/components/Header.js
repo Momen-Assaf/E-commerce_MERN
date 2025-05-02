@@ -1,15 +1,18 @@
 import React from 'react'
 import Logo from './Logo'
+import { Link } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
-import { FaC, FaRegCircleUser } from "react-icons/fa6";
+import { FaRegCircleUser } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 
 const Header = () => {
   return (
-    <header className='h-16 shadow-sm'>
+    <header className='h-16 shadow-sm bg-white'>
       <div className='h-full containter mx-auto flex items-center px-4 justify-between'>
         <div className=''>
-          <Logo w={90} h={50} />
+          <Link to="/">
+            <Logo w={90} h={50} />
+          </Link>
         </div>
         <div className='hidden lg:flex gap-1 items-center justify-between max-w-sm rounded-full focus-within:shadow pl-2'>
           <input type='text' placeholder='Products Search...' className='w-full outline-none'></input>
@@ -30,7 +33,7 @@ const Header = () => {
             </div>
           </div>
           <div>
-            <button className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</button>
+            <Link to="/login" className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</Link>
           </div>
         </div>
       </div>
