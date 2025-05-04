@@ -27,7 +27,7 @@ const Login = () => {
         <section id='login'>
             <div className='mx-auto container p-4'>
                 <div className='bg-white p-2 py-5 w-full max-w-md mx-auto'>
-                    <div className='w-20 h-20 mx-auto'>
+                    <div className='w-20 h-20 mx-auto overflow-hidden rounded-full'>
                         <img src='/assets/signin.gif' alt='login' />
                     </div>
 
