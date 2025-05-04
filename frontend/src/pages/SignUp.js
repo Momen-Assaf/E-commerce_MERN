@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import imageToBase64 from '../helpers/imageToBase64';
 
 
 const SignUp = () => {
@@ -23,21 +24,34 @@ const SignUp = () => {
             }
         })
     }
-    console.log('sign up data: ', Data);
+    // console.log('sign up data: ', Data);
+
+    const handleUploadedFile = async (e) => {
+        const file = e.target.files[0];
+        const profilePicture = await imageToBase64(file);
+        // console.log('file', profilePicture);
+
+        setData((prev) => {
+            return {
+                ...prev,
+                profilePic: profilePicture
+            }
+        })
+    }
     return (
         <section id='sign-up'>
             <div className='mx-auto containter p-4'>
                 <div className='bg-white p-2 py-5 w-full max-w-md mx-auto'>
                     <div className='w-20 h-20 mx-auto relative overflow-hidden rounded-full'>
                         <div>
-                            <img src='/assets/signin.gif' alt='login' />
+                            <img src={Data.profilePic || '/assets/signin.gif'} alt='login' />
                         </div>
                         <form>
                             <label>
                                 <div className='text-xs bg-opacity-30 bg-slate-200 pb-4 pt-2 cursor-pointer text-center absolute bottom-0 w-full'>
                                     Upload Profile Picture
                                 </div>
-                                <input type='file' className='hidden' />
+                                <input type='file' className='hidden' onChange={handleUploadedFile} />
                             </label>
                         </form>
                     </div>
