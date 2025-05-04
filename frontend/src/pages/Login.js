@@ -44,6 +44,7 @@ const Login = () => {
                                     onChange={handleChange}
                                     value={Data.email}
                                     placeholder='momenssf@gmail.com'
+                                    required
                                     className='w-full h-full outline-none bg-transparent' />
                             </div>
 
@@ -56,6 +57,7 @@ const Login = () => {
                                         onChange={handleChange}
                                         value={Data.password}
                                         placeholder='********'
+                                        required
                                         className='w-full h-full outline-none bg-transparent'></input>
                                     <div className='cursor-pointer text-xl'
                                         onClick={() => SetShowPassword((prev) => (!prev))}>

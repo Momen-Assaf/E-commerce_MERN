@@ -68,6 +68,7 @@ const SignUp = () => {
                                     onChange={handleChange}
                                     value={Data.name}
                                     placeholder='Momen Assaf'
+                                    required
                                     className='w-full h-full outline-none bg-transparent'
                                 />
                             </div>
@@ -79,6 +80,7 @@ const SignUp = () => {
                                     onChange={handleChange}
                                     value={Data.email}
                                     placeholder='momenssf@gmail.com'
+                                    required
                                     className='w-full h-full outline-none bg-transparent' />
                             </div>
                             <div>
@@ -90,6 +92,7 @@ const SignUp = () => {
                                         onChange={handleChange}
                                         value={Data.password}
                                         placeholder='********'
+                                        required
                                         className='w-full h-full outline-none bg-transparent'
                                     />
                                     <div className='cursor-pointer text-xl'
@@ -117,6 +120,7 @@ const SignUp = () => {
                                         onChange={handleChange}
                                         value={Data.passwordConfirm}
                                         placeholder='********'
+                                        required
                                         className='w-full h-full outline-none bg-transparent'
                                     />
                                     <div className='cursor-pointer text-xl'
