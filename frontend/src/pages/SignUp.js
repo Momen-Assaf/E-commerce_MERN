@@ -11,7 +11,8 @@ const SignUp = () => {
         name: '',
         email: '',
         password: '',
-        passwordConfirm: ''
+        passwordConfirm: '',
+        profilePic: ''
     })
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,9 +28,20 @@ const SignUp = () => {
         <section id='sign-up'>
             <div className='mx-auto containter p-4'>
                 <div className='bg-white p-2 py-5 w-full max-w-md mx-auto'>
-                    <div className='w-20 h-20 mx-auto'>
-                        <img src='/assets/signin.gif' alt='login' />
+                    <div className='w-20 h-20 mx-auto relative overflow-hidden rounded-full'>
+                        <div>
+                            <img src='/assets/signin.gif' alt='login' />
+                        </div>
+                        <form>
+                            <label>
+                                <div className='text-xs bg-opacity-30 bg-slate-200 pb-4 pt-2 cursor-pointer text-center absolute bottom-0 w-full'>
+                                    Upload Profile Picture
+                                </div>
+                                <input type='file' className='hidden' />
+                            </label>
+                        </form>
                     </div>
+
                     <form
                         className='pt-6'
                     >
