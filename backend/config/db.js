@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose')// object document mapper for mongodb
 
 async function connectDB() {
     try {

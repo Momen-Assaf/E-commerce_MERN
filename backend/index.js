@@ -1,5 +1,5 @@
 const express = require('express')
-const cors = require('cors')
+const cors = require('cors') // cross origin resourse sharing
 
 require('dotenv').config()
 const connectDB = require('./config/db')
