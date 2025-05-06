@@ -5,9 +5,11 @@ async function userSignUpController(req, res) {
     try {
         const { name, email, password } = req.body
 
-        if (!email) throw new Error('Please provide email');
-        if (!name) throw new Error('Please provide name');
-        if (!password) throw new Error('Please provide password');
+        console.log('req.body:', req.body)
+
+        if (!email) throw new Error('Please provide an email');
+        if (!name) throw new Error('Please provide a name');
+        if (!password) throw new Error('Please provide a password');
 
         const salt = await bycrypt.genSalt(10)
         const hashedPassword = await bycrypt.hash(password, salt)
