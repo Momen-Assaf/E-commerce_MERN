@@ -9,8 +9,8 @@ async function userSignUpController(req, res) {
         if (!name) throw new Error('Please provide name');
         if (!password) throw new Error('Please provide password');
 
-        const salt = bycrypt.genSaltSync(10)
-        const hashedPassword = await bycrypt.hashSync(password)
+        const salt = await bycrypt.genSalt(10)
+        const hashedPassword = await bycrypt.hash(password, salt)
 
         if (!hashedPassword) throw new Error('Something is wrong with the passowrd');
 
@@ -20,7 +20,7 @@ async function userSignUpController(req, res) {
         }
 
         const userData = new userModel(payload)
-        const saveUser = userData.save()
+        const saveUser = await userData.save()
 
         res.status(201).json({
             data: saveUser,
@@ -31,7 +31,7 @@ async function userSignUpController(req, res) {
 
     } catch (error) {
         res.json({
-            message: error,
+            message: error.message || 'Signup failed',
             error: true,
             success: false
         })
