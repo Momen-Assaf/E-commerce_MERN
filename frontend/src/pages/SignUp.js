@@ -4,6 +4,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import imageToBase64 from '../helpers/imageToBase64';
 import SummaryApi from '../common/index'
+import { toast } from 'react-toastify';
 
 
 const SignUp = () => {
@@ -51,6 +52,7 @@ const SignUp = () => {
                 body: JSON.stringify(Data)
             })
             const dataApi = await dataResponse.json()
+            toast(dataApi.message)
             console.log('data:', dataApi)
         }
         else {
