@@ -5,8 +5,9 @@ async function userSignUpController(req, res) {
     try {
         const { name, email, password } = req.body
 
-        console.log('req.body:', req.body)
-
+        const user = await userModel.findOne({email})
+        
+        if (user) throw new Error('User already exists');
         if (!email) throw new Error('Please provide an email');
         if (!name) throw new Error('Please provide a name');
         if (!password) throw new Error('Please provide a password');
