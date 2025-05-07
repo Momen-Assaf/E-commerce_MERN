@@ -52,11 +52,12 @@ const SignUp = () => {
                 body: JSON.stringify(Data)
             })
             const dataApi = await dataResponse.json()
-            toast(dataApi.message)
             console.log('data:', dataApi)
+            if (dataApi.success) toast.success(dataApi.message);
+            if (dataApi.error) toast.error(dataApi.message)
         }
         else {
-            console.log('make sure passowrds match')
+            toast.error('Passwords dont match')
         }
     }
     return (
