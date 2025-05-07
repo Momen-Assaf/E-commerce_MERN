@@ -3,6 +3,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import imageToBase64 from '../helpers/imageToBase64';
+import SummaryApi from '../common/index'
 
 
 const SignUp = () => {
@@ -38,6 +39,24 @@ const SignUp = () => {
             }
         })
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if (Data.password === Data.passwordConfirm) {
+            const dataResponse = await fetch(SummaryApi.signUp.url, {
+                method: SummaryApi.signUp.method,
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(Data)
+            })
+            const dataApi = await dataResponse.json()
+            console.log('data:', dataApi)
+        }
+        else {
+            console.log('make sure passowrds match')
+        }
+    }
     return (
         <section id='sign-up'>
             <div className='mx-auto containter p-4'>
@@ -58,6 +77,7 @@ const SignUp = () => {
 
                     <form
                         className='pt-6'
+                        onSubmit={handleSubmit}
                     >
                         <div className='grid'>
                             <label>Full Name :</label>
