@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import imageToBase64 from '../helpers/imageToBase64';
 import SummaryApi from '../common/index'
 import { toast } from 'react-toastify';
@@ -17,6 +17,7 @@ const SignUp = () => {
         passwordConfirm: '',
         profilePic: ''
     })
+    const navigate = useNavigate()
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData((prev) => {
@@ -53,7 +54,10 @@ const SignUp = () => {
             })
             const dataApi = await dataResponse.json()
             console.log('data:', dataApi)
-            if (dataApi.success) toast.success(dataApi.message);
+            if (dataApi.success) {
+                toast.success(dataApi.message);
+                navigate('/login')
+            }
             if (dataApi.error) toast.error(dataApi.message)
         }
         else {
