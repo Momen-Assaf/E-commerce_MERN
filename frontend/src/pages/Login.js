@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import SummaryApi from '../common';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [ShowPassword, SetShowPassword] = useState(false);
@@ -9,7 +11,7 @@ const Login = () => {
         email: '',
         password: ''
     });
-
+    const navigate = useNavigate()
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData((prev) => {
@@ -19,8 +21,23 @@ const Login = () => {
             }
         })
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const dataResponse = await fetch(SummaryApi.signin.url, {
+            method: SummaryApi.signin.method,
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(Data)
+        })
+        const dataApi = await dataResponse.json()
+        console.log('data: ', dataApi)
+        if (dataApi.success) {
+            toast.success(dataApi.message)
+            navigate('/')
+        }
+        if (dataApi.error) toast.error(dataApi.message);
     }
     console.log('log in data: ', Data);
     return (
@@ -33,7 +50,7 @@ const Login = () => {
 
                     <form
                         className='pt-6'
-                    // onSubmit={handleSubmit}
+                        onSubmit={handleSubmit}
                     >
                         <div className='grid'>
                             <label>Email :</label>
