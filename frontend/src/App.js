@@ -15,12 +15,12 @@ function App() {
       credentials: 'include'
     })
 
-    const dataApi = dataResponse.json()
+    const dataApi = await dataResponse.json()
     console.log('data api: ', dataApi)
   }
   useEffect(() => {
     fetchUserDetails()
-  }, {})
+  }, [])
   return (
     <>
       <Context.Provider value={{
